@@ -1,19 +1,10 @@
-all: deps
+PROJECT = jsx
 
-deps:
-	rebar get-deps
-	rebar compile
+ERLC_OPTS = -Werror +debug_info +warn_export_all +warn_export_vars \
+	+warn_shadow_vars +warn_obsolete_guard -Dmaps_support
 
-app:
-	rebar compile
+# dependencies
 
-tests:
-	rebar eunit
+DEPS =
 
-clean:
-	rebar clean
-
-distclean: clean
-	rebar delete-deps
-
-.PHONY: all deps app tests clean distclean
+include erlang.mk
